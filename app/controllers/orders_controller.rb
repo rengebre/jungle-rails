@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    # @line_items = Product.joins("JOIN line_items ON line_items.product_id = products.id").select("products.name, products.description, products.image, line_items.*").where("line_items.order_id = ?", params[:id]).order("line_items.created_at DESC")
+    @line_items = Product.joins("JOIN line_items ON line_items.product_id = products.id").select("products.name, products.description, products.image, line_items.*").where("line_items.order_id = ?", params[:id]).order("line_items.created_at DESC")
+    puts @line_items.inspect
   end
 
   def create
