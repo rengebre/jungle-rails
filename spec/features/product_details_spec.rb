@@ -16,16 +16,12 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
       end
     end
 
-  scenario "They see all products" do
+  scenario "The product show page renders when a product link is clicked on from the home page" do
     # ACT
     visit root_path
 
-    page.all('article.product')[6].find('header').click
+    page.all('article.product')[0].find('header').click
     
-    # sleep 2
-    # DEBUG / VERIFY
-    # save_screenshot
-
     expect(page).to have_css 'section.products-show'
   end
 
